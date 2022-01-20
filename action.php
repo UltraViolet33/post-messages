@@ -32,7 +32,5 @@ if (isset($_POST['valider'])) {
             $guestBook->addMessage($message);
             require_once('index.php');
         }
-
-       
     }
 }
