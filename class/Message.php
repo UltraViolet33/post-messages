@@ -34,7 +34,6 @@ class Message
      */
     public function usernameIsValid()
     {
-        echo $this->username;
         if (strlen($this->username) > 3) {
             return true;
         } else {
@@ -49,7 +48,6 @@ class Message
      */
     public function messageIsValid()
     {
-       
         if (strlen($this->message) > 10) {
             return true;
         } else {
