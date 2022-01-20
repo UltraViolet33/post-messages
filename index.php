@@ -1,3 +1,17 @@
+<?php
+
+/**
+ * index.php
+ * Form to add a message
+ * @author Ulysse Valdenaire
+ * 20/01/2022
+ */
+
+require_once('class/GuestBook.php');
+$guestBook = new GuestBook();
+$messages = $guestBook->getMessages();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,17 +35,37 @@
                 <form action="action.php" method="POST" id="form">
                     <div class="mb-3">
                         <label for="username" class="form-label">Votre pseudo : </label>
-                        <input type="text" name='username' value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" class="form-control">
-                        <?php if(isset($msgFormName)) echo $msgFormName; ?>
+                        <input type="text" name='username' value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" class="form-control">
+                        <?php if (isset($msgFormName)) echo $msgFormName; ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group my-3">
                         <label for="message">Votre message</label>
-                        <textarea class="form-control rounded-0" name="message" rows="10"><?php if(isset($_POST['message'])) echo $_POST['message'];?></textarea>
-                        <?php if(isset($msgFormMsg)) echo $msgFormMsg; ?>
+                        <textarea class="form-control rounded-0" name="message" rows="10" style="resize:none"><?php if (isset($_POST['message'])) echo $_POST['message']; ?></textarea>
+                        <?php if (isset($msgFormMsg)) echo $msgFormMsg; ?>
                     </div>
                     <input type="submit" class="btn btn-primary" name="valider" value="valider">
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="row justify-content-center my-5">
+        <div class="col-8">
+            <?php if ($messages) {
+            ?>
+                <h3>Messages postés</h3>
+                <?php
+                foreach ($messages as $message) {
+                ?>
+                    <p><strong>User : <?= $message['username'] ?></strong></p>
+                    <p>Message : <?= $message['message'] ?></p>
+                <?php
+                }
+            } else {
+                ?>
+                <h3>Aucun Message posté</h3>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
