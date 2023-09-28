@@ -1,18 +1,14 @@
 <?php
-/**
- * index.php
- * Form to add a message
- * @author Ulysse Valdenaire
- * 20/01/2022
- */
 
-require_once('class/GuestBook.php');
+declare(strict_types=1);
+
+require_once './class/GuestBook.php';
 $guestBook = new GuestBook();
 $messages = $guestBook->getMessages();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8" />

@@ -1,15 +1,10 @@
 <?php
-/**
- * action.php
- * Manage the form
- * @author Ulysse Valdenaire
- * 20/01/2022
-*/
 
-require_once("class/Message.php");
-require_once("class/GuestBook.php");
 
-if (isset($_POST['valider'])) {
+require_once "class/Message.php";
+require_once "class/GuestBook.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($_POST['username']) && !empty($_POST['message'])) {
         $username = $_POST['username'];
         $messageUser = $_POST['message'];
@@ -17,7 +12,8 @@ if (isset($_POST['valider'])) {
 
         if (!$message->usernameIsValid()) {
             $msgFormName = $message->getError()['username'];
-            require('index.php');
+            // require('index.php');
+            header("Location: index.php");
             die();
         }
 

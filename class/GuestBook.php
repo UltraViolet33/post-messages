@@ -1,47 +1,27 @@
 <?php
-/**
- * GuestBook.php
- * Class GuestBook to manage the guestBook
- * @author Ulysse Valdenaire
- * 20/01/2022
-*/
 
-require_once("Database.php");
+declare(strict_types=1);
 
-/**
- * GuestBook
- * extends class Database
- */
+require_once "Database.php";
+
 class GuestBook extends Database
 {
     
-    /**
-     * __construct
-     * set the connexion to the database
-     * @return void
-     */
     public function __construct()
     {
         $this->setDatabase();
     }
     
-    /**
-     * addMessage
-     * @param  Message $message
-     * @return void
-     */
-    public function addMessage(Message $message)
+
+    public function addMessage(Message $message): void 
     {
         $data = $message->getData();
         $req = $this->dbConnect()->prepare("INSERT INTO messages(username, message) VALUES(?,?)");
-        $result = $req->execute(array($data['username'], $data['message']));
+        $req->execute(array($data['username'], $data['message']));
     }
 
-    /**
-     * getMessages
-     * @return array
-     */
-    public function getMessages()
+
+    public function getMessages(): array
     {
         $req = $this->dbConnect()->query("SELECT * FROM messages");
         $req = $req->fetchAll();
