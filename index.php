@@ -31,12 +31,10 @@ $messages = $guestBook->getMessages();
                     <div class="mb-3">
                         <label for="username" class="form-label">Votre pseudo : </label>
                         <input type="text" name='username' value="<?php if (isset($_POST['username'])) echo htmlspecialchars($_POST['username']); ?>" class="form-control">
-                        <?php if (isset($msgFormName)) echo $msgFormName; ?>
                     </div>
                     <div class="form-group my-3">
                         <label for="message">Votre message</label>
                         <textarea class="form-control rounded-0" name="message" rows="10" style="resize:none"><?php if (isset($_POST['message'])) echo htmlspecialchars($_POST['message']); ?></textarea>
-                        <?php if (isset($msgFormMsg)) echo $msgFormMsg; ?>
                     </div>
                     <input type="submit" class="btn btn-primary" name="valider" value="valider">
                 </form>

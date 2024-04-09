@@ -24,7 +24,6 @@ class GuestBook extends Database
     public function getMessages(): array
     {
         $req = $this->dbConnect()->query("SELECT * FROM messages");
-        $req = $req->fetchAll();
-        return $req;
+        return $req->fetchAll();
     }
 }
