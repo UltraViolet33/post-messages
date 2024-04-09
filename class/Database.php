@@ -8,7 +8,7 @@ class Database
     protected $user;
     protected $dbpassword;
 
-    public function setDatabase(string $host = "localhost", string $dbname = "guestbook", string $user = "root", string $dbpassword = "")
+    public function setDatabase(string $host = "localhost", string $dbname = "guestbook", string $user = "root", string $dbpassword = "root")
     {
         $this->host = $host;
         $this->dbname = $dbname;
