@@ -1,7 +1,5 @@
 # Post-Message
 
-This is a little pratice of POO in PHP with a very little database !
-
 The user writes a message with his username and the message is displayed under the form.
 
 ## Classes
@@ -16,7 +14,3 @@ You can create the database with the script.sql file.
 There is only one table.
 
 Do not forget to set the database host, name, username and password in the Database.php file.
-
-
-
-
